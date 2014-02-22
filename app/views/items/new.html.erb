@@ -1,0 +1,19 @@
+<h1>New Item</h1>
+
+<%= form_for @item do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control input-lg" %>
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <%= f.text_field :price, class: "form-control input-lg", type: "number", style: "width: 230px" %>
+  </div>
+
+  <div class="form-group" style="margin-top: 6px">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
