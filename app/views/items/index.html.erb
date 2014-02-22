@@ -11,8 +11,17 @@
           <h3><%= item.name %></h3>
           <p><%= number_to_currency item.price %></p>
           <p>
-            <a href="#" class="btn btn-primary" role="button">Button</a>
-            <a href="#" class="btn btn-default" role="button">Button</a>
+            <%= form_tag stripe_payment_path do %>
+              <%= hidden_field_tag :amount, item.price * 100 %>
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                data-image="/assets/moon.jpg"
+                data-name="Girls Shoppe"
+                data-description="<%= item.name %> (<%= number_to_currency item.price %>)"
+                data-amount="<%= (item.price or 0) * 100 %>">
+              </script>
+            <% end %>
           </p>
         </div>
       </div>
